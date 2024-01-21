@@ -1,6 +1,6 @@
 [package]
 name = "minibreak"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["Lai Zn<laizenan@gmail.com"]
 edition = "2021"
 description = "lightweight cli tool `minibreak` to wash your eyes before taking a break during heavy work."
