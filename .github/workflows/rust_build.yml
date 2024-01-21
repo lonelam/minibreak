@@ -5,8 +5,6 @@ on:
     tags:
       - "v*"
 
-  workflow_dispatch:
-
 jobs:
   build:
     name: Build on ${{ matrix.os }} for ${{ matrix.target }}
@@ -43,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.asset_name }}
-          path: target/${{ matrix.target }}/release/minibreak*
+          path: target/${{ matrix.target }}/release/minibreak
 
   release:
     needs: build
@@ -51,6 +49,8 @@ jobs:
     steps:
       - name: Download Artifacts
         uses: actions/download-artifact@v2
+        with:
+          path: downloads
 
       - name: Create Release
         id: create_release
@@ -63,12 +63,32 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Upload Release Assets
+      - name: Upload Linux Asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: minibreak*
-          asset_name: ${{ matrix.asset_name }}
+          asset_path: downloads/minibreak-linux
+          asset_name: minibreak-linux
+          asset_content_type: application/octet-stream
+
+      - name: Upload Windows Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: downloads/minibreak-windows.exe
+          asset_name: minibreak-windows.exe
+          asset_content_type: application/octet-stream
+
+      - name: Upload macOS Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: downloads/minibreak-mac
+          asset_name: minibreak-mac
           asset_content_type: application/octet-stream
