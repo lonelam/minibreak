@@ -14,10 +14,13 @@ jobs:
         include:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
+            asset_name: "minibreak-linux"
           - os: windows-latest
             target: x86_64-pc-windows-gnu
+            asset_name: "minibreak-windows.exe"
           - os: macos-latest
             target: x86_64-apple-darwin
+            asset_name: "minibreak-mac"
       fail-fast: false
 
     steps:
@@ -37,8 +40,8 @@ jobs:
       - name: Archive and upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ matrix.target }}
-          path: target/${{ matrix.target }}/release/
+          name: ${{ matrix.asset_name }}
+          path: target/${{ matrix.target }}/release/minibreak*
 
   release:
     needs: build
@@ -64,6 +67,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./
-          asset_name: ${{ matrix.target }}.zip
-          asset_content_type: application/zip
+          asset_path: minibreak*
+          asset_name: ${{ matrix.asset_name }}
+          asset_content_type: application/octet-stream

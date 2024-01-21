@@ -1,5 +1,7 @@
 # MiniBreak
 
+[![Rust Build](https://github.com/lonelam/minibreak/actions/workflows/rust_build.yml/badge.svg)](https://github.com/lonelam/minibreak/actions/workflows/rust_build.yml)
+
 ## Description
 
 MiniBreak is a simple, intuitive command-line application designed to give programmers and computer users a quick and easy way to clear their screen and take a short, refreshing break. When you type `minibreak` and hit enter, the application minimizes all open windows, revealing your desktop adorned with the latest Bing wallpaper. It's the perfect tool to help you step back, relax, and declutter your digital workspace momentarily.
