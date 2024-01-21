@@ -10,8 +10,14 @@ MiniBreak is a simple, intuitive command-line application designed to give progr
 
 Instructions on how to install MiniBreak.
 
+### Use cargo if you are familiar with cargo
 ```bash
 cargo install minibreak
+```
+
+### Use install script
+```bash
+
 ```
 
 ## Usage
