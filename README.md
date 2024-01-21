@@ -25,7 +25,7 @@ After installation, simply type `minibreak` in your command line and press enter
 
 ## Limitation
 
-MiniBreak is currently only available to minimize all open windows on Windows, if you're running a different operating system, please fork the repository and modify the code to suit your needs.
+MiniBreak is currently only available to minimize all open windows on Windows and MacOS, if you're running a different operating system, please fork the repository and modify the code to suit your needs.
 
 ## Contributing
 
