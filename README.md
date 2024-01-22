@@ -17,7 +17,7 @@ cargo install minibreak
 
 ### Use install script
 ```bash
-
+curl -s https://raw.githubusercontent.com/lonelam/minibreak/main/install.sh | sh
 ```
 
 ## Usage
