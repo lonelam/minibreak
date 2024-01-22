@@ -22,6 +22,7 @@ download_binary() {
     local url="https://github.com/$GITHUB_REPO/releases/latest/download/$binary"
 
     echo "Downloading $binary..."
+    mkdir -p "/usr/local/bin"
     curl -L -o "/usr/local/bin/$BINARY_NAME" "$url" || { echo "Failed to download binary"; exit 1; }
     chmod +x "/usr/local/bin/$BINARY_NAME"
     echo "$BINARY_NAME installed successfully."
